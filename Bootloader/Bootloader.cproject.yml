@@ -1,0 +1,93 @@
+# A project translates into one executable or library.
+project:
+  device: ""
+
+  define:
+    - CMSIS_device_header: '\"stm32f4xx.h\"'
+    - USE_FULL_LL_DRIVER
+    - USE_HAL_DRIVER
+    - STM32F401xC
+
+  add-path:
+    - ./lib/inc
+    - ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/CMSIS/Device/ST/STM32F4xx/Include/
+    - ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Inc
+    - ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
+    - ./CUBEMX/
+
+  
+
+  groups:
+    - group: Source Files
+      files:
+        - file: ./app_main.c
+
+    - group: USB
+      files:
+        - file: ./USB/USBD_User_MSC_0.c
+
+    - group: Bootloader.Debug
+      files:
+        - file: ./lib/src/bootctl.c
+        - file: ./lib/src/flash_LL.c
+        - file: ./lib/src/uf2_loader.c
+
+    - group: CUBEMX
+      files:
+        - file: ./CUBEMX/gpio.c
+        - file: ./CUBEMX/main.c
+        - file: ./CUBEMX/stm32f4xx_hal_msp.c
+        - file: ./CUBEMX/stm32f4xx_hal_timebase_tim.c
+        - file: ./CUBEMX/stm32f4xx_it.c
+        - file: ./CUBEMX/system_stm32f4xx.c
+        - file: ./CUBEMX/usb_otg.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/MDK-ARM/startup_stm32f401xc.s
+
+    - group: CUBEMX driver folder
+      files:
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
+        - file: ../STM32CubeMX/STM32F401RCTx/STM32CubeMX/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
+
+
+    
+  # List components to use for your application.
+  # A software component is a re-usable unit that may be configurable.
+  components:
+    - component: ARM::CMSIS:CORE
+    - component: CMSIS Driver:USB Device
+    - component: USB&MDK:CORE
+    - component: USB&MDK:Device:MSC
+    - component: USB&MDK:Device
+    - component: CMSIS:OS Tick:SysTick
+    - component: CMSIS:RTOS2:Keil RTX5&Source
+
+  # List executable file formats to be generated.
+  output:
+    type:
+      - elf
+      - hex
+      - map
+  packs:
+    - pack: Keil::MDK-Middleware
+    - pack: ARM::CMSIS-Driver_STM32
+    - pack: ARM::CMSIS-RTX
